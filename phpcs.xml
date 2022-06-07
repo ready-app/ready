@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ruleset name="Standard">
+    <rule ref="PSR12">
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" />
+        <exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine" />
+        <exclude name="PSR12.Traits.UseDeclaration" />
+    </rule>
+
+    <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
+    <rule ref="Generic.Classes.OpeningBraceSameLine" />
+
+    <file>app</file>
+    <file>database</file>
+</ruleset>
