@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "98697e8abc09fb6ef10d1c1153116cd4",
+    "content-hash": "d3d7ea5e121311588f645c4aea84a8d5",
     "packages": [
         {
             "name": "brick/math",
@@ -7676,16 +7676,16 @@
         },
         {
             "name": "spatie/laravel-ignition",
-            "version": "1.0.0",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ignition.git",
-                "reference": "fe1d95623922fd5f9d5e802ce4ec1943e59c9a81"
+                "reference": "51e5daaa7e43c154fe57f1ddfbba862f9fe57646"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/fe1d95623922fd5f9d5e802ce4ec1943e59c9a81",
-                "reference": "fe1d95623922fd5f9d5e802ce4ec1943e59c9a81",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/51e5daaa7e43c154fe57f1ddfbba862f9fe57646",
+                "reference": "51e5daaa7e43c154fe57f1ddfbba862f9fe57646",
                 "shasum": ""
             },
             "require": {
@@ -7695,7 +7695,8 @@
                 "illuminate/support": "^8.77|^9.0",
                 "monolog/monolog": "^2.3",
                 "php": "^8.0",
-                "spatie/ignition": "^1.0",
+                "spatie/flare-client-php": "^1.0.1",
+                "spatie/ignition": "^1.2.4",
                 "symfony/console": "^5.0|^6.0",
                 "symfony/var-dumper": "^5.0|^6.0"
             },
@@ -7723,6 +7724,9 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
                 "psr-4": {
                     "Spatie\\LaravelIgnition\\": "src"
                 }
@@ -7758,7 +7762,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-18T15:21:26+00:00"
+            "time": "2022-05-05T15:53:24+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
