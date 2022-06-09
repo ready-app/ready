@@ -13,6 +13,7 @@
         "laravel/tinker": "2.7.2"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "3.6.7",
         "fakerphp/faker": "1.19.0",
         "friendsofphp/php-cs-fixer": "3.8.0",
         "laravel/sail": "1.14.9",
