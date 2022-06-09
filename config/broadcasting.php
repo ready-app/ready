@@ -40,31 +40,31 @@ return [
                 'port' => env('PUSHER_PORT', 443),
                 'scheme' => env('PUSHER_SCHEME', 'https'),
                 'encrypted' => true,
-                'useTLS' => env('PUSHER_SCHEME', 'https') === 'https',
+                'useTLS' => env('PUSHER_SCHEME', 'https') === 'https'
             ],
             'client_options' => [
                 // Guzzle client options: https://docs.guzzlephp.org/en/stable/request-options.html
-            ],
+            ]
         ],
 
         'ably' => [
             'driver' => 'ably',
-            'key' => env('ABLY_KEY'),
+            'key' => env('ABLY_KEY')
         ],
 
         'redis' => [
             'driver' => 'redis',
-            'connection' => 'default',
+            'connection' => 'default'
         ],
 
         'log' => [
-            'driver' => 'log',
+            'driver' => 'log'
         ],
 
         'null' => [
-            'driver' => 'null',
-        ],
+            'driver' => 'null'
+        ]
 
-    ],
+    ]
 
 ];
