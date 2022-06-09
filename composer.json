@@ -16,7 +16,7 @@
         "barryvdh/laravel-debugbar": "3.6.7",
         "fakerphp/faker": "1.19.0",
         "friendsofphp/php-cs-fixer": "3.8.0",
-        "laravel/sail": "1.14.9",
+        "laravel/sail": "1.14.10",
         "mockery/mockery": "1.5.0",
         "nunomaduro/collision": "6.2.0",
         "phpunit/phpunit": "9.5.20",
