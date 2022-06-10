@@ -20,7 +20,8 @@ class ExampleTest extends TestCase {
 
     public function test_home_page_returns_correct_component() {
         $response = $this->get('/');
-        $response->assertInertia(fn (AssertableInertia $page) => $page
+        $response->assertInertia(
+            fn (AssertableInertia $page) => $page
             ->component('Home')
         );
     }
