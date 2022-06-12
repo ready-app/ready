@@ -22,7 +22,7 @@ class ExampleTest extends TestCase {
         $response = $this->get('/');
         $response->assertInertia(
             fn (AssertableInertia $page) => $page
-            ->component('Home')
+            ->component('HomePage')
         );
     }
 }
