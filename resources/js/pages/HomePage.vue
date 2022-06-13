@@ -1,6 +1,11 @@
 <template>
     <p>{{ counter }}</p>
-    <button @click="increment" class="btn btn-secondary">Increment</button><br>
+    <button
+        @click="increment"
+        class="btn btn-secondary"
+    >
+        Increment
+    </button><br>
     <Link href="/login">Login page</Link>
 </template>
 
@@ -12,7 +17,7 @@ let counter = ref(0);
 
 const increment = () => {
     counter.value++;
-}
+};
 </script>
 
 <style scoped>

@@ -53,7 +53,7 @@ return [
             'svelte',
             'ts',
             'tsx',
-            'vue',
+            'vue'
 
         ]
 
