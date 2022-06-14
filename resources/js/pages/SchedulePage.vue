@@ -4,7 +4,6 @@
 
     <Link href="/coursework">Go to your course work</Link>
     <Link href="/import">Click to import courses</Link>
-    
 </template>
 
 <script setup>
