@@ -23,6 +23,6 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/schedule', [ScheduleController::class, 'index']);
-Route::get('/import', [ImportcourseController::class, 'index']);
+Route::get('/import', [ImportCourseController::class, 'index']);
 Route::get('/coursework', [CourseworkController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);

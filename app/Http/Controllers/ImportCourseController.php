@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ImportcourseController extends Controller {
+class ImportCourseController extends Controller {
     public function index() {
         return inertia("ImportCoursePage");
     }
