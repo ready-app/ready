@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\ImportcourseController;
+use App\Http\Controllers\ImportCourseController;
 use App\Http\Controllers\CourseworkController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\HomeController;
