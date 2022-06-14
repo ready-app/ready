@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/login', [AuthController::class, 'loginPage']);
+Route::get('/registration', [AuthController::class, 'registrationPage']);
+Route::get('/schedule', [AuthController::class, 'schedulePage']);
+Route::get('/import', [AuthController::class, 'import_coursePage']);
+Route::get('/coursework', [AuthController::class, 'courseworkPage']);
+Route::get('/home', [AuthController::class, 'homePage']);
