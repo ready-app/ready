@@ -6,7 +6,8 @@
     >
         Increment
     </button><br>
-    <Link href="/login">Login page</Link>
+    <Link href="/login">Login page</Link><br>
+    <Link href="/schedule">Go to schedule</Link>
 </template>
 
 <script setup>

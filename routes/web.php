@@ -1,6 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ImportCourseController;
+use App\Http\Controllers\CourseworkController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/login', [AuthController::class, 'loginPage']);
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/schedule', [ScheduleController::class, 'index']);
+Route::get('/import', [ImportCourseController::class, 'index']);
+Route::get('/coursework', [CourseworkController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);

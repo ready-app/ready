@@ -1,7 +1,6 @@
 <template>
-    <p>Login page!</p>
-    <Link href="/">Back to home</Link><br>
-    <Link href="/register">Go to Registration</Link>
+    <p>Please register</p>
+    <Link href="/">Go to Home</Link>
 </template>
 
 <script setup>

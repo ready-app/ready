@@ -1,7 +1,6 @@
 <template>
-    <p>Login page!</p>
-    <Link href="/">Back to home</Link><br>
-    <Link href="/register">Go to Registration</Link>
+    <p>Here is your coursework</p>
+    <Link href="/schedule">Back to schedule</Link>
 </template>
 
 <script setup>
