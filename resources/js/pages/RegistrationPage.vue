@@ -1,7 +1,6 @@
 <template>
     <p>Please register</p>
-    <Link href="/">Previous</Link>
-    <Link href="/schedule">Go to schedule</Link>
+    <Link href="/">Go to Home</Link>
 </template>
 
 <script setup>

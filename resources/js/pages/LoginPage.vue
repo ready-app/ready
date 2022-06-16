@@ -1,6 +1,6 @@
 <template>
     <p>Login page!</p>
-    <Link href="/">Back to home</Link>
+    <Link href="/">Back to home</Link><br>
     <Link href="/register">Go to Registration</Link>
 </template>
 

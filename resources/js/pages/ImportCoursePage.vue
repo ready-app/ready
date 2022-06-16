@@ -1,6 +1,6 @@
 <template>
     <p>Import your courses </p>
-    <Link href="/">Previous</Link>
+    <Link href="/schedule">Back to schedule</Link>
 </template>
 
 <script setup>

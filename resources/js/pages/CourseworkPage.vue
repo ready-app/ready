@@ -1,6 +1,6 @@
 <template>
     <p>Here is your coursework</p>
-    <Link href="/">Previous</Link>
+    <Link href="/schedule">Back to schedule</Link>
 </template>
 
 <script setup>

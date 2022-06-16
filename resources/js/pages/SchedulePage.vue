@@ -1,8 +1,8 @@
 <template>
     <p>Here is your schedule </p>
-    <Link href="/">Previous</Link>
+    <Link href="/">Go to home</Link><br>
 
-    <Link href="/coursework">Go to your course work</Link>
+    <Link href="/coursework">Go to your course work</Link><br>
     <Link href="/import">Click to import courses</Link>
 </template>
 
