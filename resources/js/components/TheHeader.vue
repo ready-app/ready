@@ -43,8 +43,18 @@
                     </li>
                 </ul>
                 <div>
-                    <Link href="/login" class="btn btn-primary me-2">Login</Link>
-                    <Link href="/register" class="btn btn-secondary">Register</Link>
+                    <Link
+                        href="/login"
+                        class="btn btn-primary me-2"
+                    >
+                        Login
+                    </Link>
+                    <Link
+                        href="/register"
+                        class="btn btn-secondary"
+                    >
+                        Register
+                    </Link>
                 </div>
             </div>
         </div>
@@ -58,7 +68,7 @@ import { ref } from "vue";
 
 const path = ref(window.location.pathname);
 
-Inertia.on('success', (event) => {
+Inertia.on("success", () => {
     path.value = window.location.pathname;
 });
 
