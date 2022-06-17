@@ -15,6 +15,7 @@
         "@babel/preset-react": "7.17.12",
         "@inertiajs/inertia": "0.11.0",
         "@inertiajs/inertia-vue3": "0.6.0",
+        "@popperjs/core": "2.11.5",
         "@typescript-eslint/eslint-plugin": "5.28.0",
         "@typescript-eslint/parser": "5.28.0",
         "@vue/compiler-sfc": "3.2.37",
