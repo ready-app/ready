@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,9 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.ts('resources/js/app.ts', 'public/js')
+mix.ts("resources/js/app.ts", "public/js")
     .extract()
     .vue()
-    .sass('resources/sass/app.scss', 'public/css')
+    .sass("resources/sass/app.scss", "public/css")
     .version()
+    .sourceMaps(false)
     .disableSuccessNotifications();

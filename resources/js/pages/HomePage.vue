@@ -10,9 +10,18 @@
     <Link href="/schedule">Go to schedule</Link>
 </template>
 
-<script setup>
-import  { ref } from "vue";
-import { Link } from "@inertiajs/inertia-vue3";
+<script setup lang="ts">
+import { defineProps, ref } from "vue";
+import { Link, usePage } from "@inertiajs/inertia-vue3";
+import { User } from "../types";
+
+// interface Props {
+//     user: User | null
+// }
+//
+// const props = defineProps<Props>();
+//
+// console.log(props);
 
 let counter = ref(0);
 
