@@ -15,7 +15,7 @@ return [
             'entrypoints' => [
                 'ssr' => 'resources/scripts/ssr.ts',
                 'paths' => [
-                    'resources/scripts/main.ts',
+                    'resources/sass/app.scss',
                     'resources/js/app.ts',
                 ],
                 'ignore' => '/\\.(d\\.ts|json)$/',
