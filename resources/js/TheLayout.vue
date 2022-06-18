@@ -9,12 +9,12 @@
 </template>
 
 <script setup lang="ts">
-import TheHeader from "./components/TheHeader.vue";
-import TheFooter from "./components/TheFooter.vue";
-import { useUserStore } from "./store/user";
+import TheHeader from "@/components/TheHeader.vue";
+import TheFooter from "@/components/TheFooter.vue";
+import { useUserStore } from "@/store/user";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-vue3";
-import { User } from "./types";
+import { User } from "@/types";
 
 const userStore = useUserStore();
 const page = usePage<{ user: User | null }>();

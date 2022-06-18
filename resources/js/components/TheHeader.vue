@@ -54,7 +54,7 @@
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                         >
-                            {{ userStore.user?.name }}
+                            {{ userStore.user.name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
