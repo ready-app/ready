@@ -54,7 +54,7 @@
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                         >
-                            {{ userStore.user.name }}
+                            {{ userStore.user?.name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
@@ -88,14 +88,12 @@
 </template>
 
 <script setup lang="ts">
-import { Link, usePage } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { useUserStore } from "../store/user";
 
 const userStore = useUserStore();
-
-//const user = usePage().props.value.user;
 
 const path = ref(window.location.pathname);
 
