@@ -5,10 +5,7 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <title>READY</title>
-        <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-        <script src="{{ mix('/js/app.js') }}" defer></script>
-        <script src="{{ mix('/js/manifest.js') }}" defer></script>
-        <script src="{{ mix('/js/vendor.js') }}" defer></script>
+        @vite
         @inertiaHead
     </head>
     <body>

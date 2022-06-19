@@ -8,12 +8,14 @@
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "7.4.4",
         "inertiajs/inertia-laravel": "0.6.2",
+        "innocenzi/laravel-vite": "0.2.0-beta.21",
         "laravel/framework": "9.17.0",
         "laravel/sanctum": "2.15.1",
         "laravel/tinker": "2.7.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "3.6.7",
+        "barryvdh/laravel-ide-helper": "2.12.3",
         "fakerphp/faker": "1.19.0",
         "friendsofphp/php-cs-fixer": "3.8.0",
         "laravel/sail": "1.14.10",
