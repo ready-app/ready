@@ -42,29 +42,58 @@
                         </Link>
                     </li>
                 </ul>
-                <div>
-                    <Link
-                        href="/login"
-                        class="btn btn-primary me-2"
+                <div class="navbar-nav">
+                    <div
+                        v-if="userStore.user !== null"
+                        class="nav-item dropdown"
                     >
-                        Login
-                    </Link>
-                    <Link
-                        href="/register"
-                        class="btn btn-secondary"
-                    >
-                        Register
-                    </Link>
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            {{ userStore.user.name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <Link
+                                    href="/logout"
+                                    class="dropdown-item"
+                                >
+                                    Logout
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div v-else>
+                        <Link
+                            href="/login"
+                            class="btn btn-primary me-2"
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            href="/register"
+                            class="btn btn-secondary"
+                        >
+                            Register
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 import { ref } from "vue";
+import { useUserStore } from "../store/user";
+
+const userStore = useUserStore();
 
 const path = ref(window.location.pathname);
 
@@ -72,7 +101,7 @@ Inertia.on("success", () => {
     path.value = window.location.pathname;
 });
 
-const isActive = (linkPath) => {
+const isActive = (linkPath: string) => {
     return path.value === linkPath;
 };
 
