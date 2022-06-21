@@ -15,9 +15,14 @@ class Assignment extends Model
         'due_at'
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
 
     protected $casts = [
-        'created_at' => 'datetime:Y-m-d H:i:s',
+        'created_at' => 'datetime:Y-m-d H:i:s'
     ];
 
 }
