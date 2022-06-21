@@ -25,7 +25,7 @@ A web app to easily manage your coursework.
 6. Run `php artisan key:generate` to create application key
 7. Run `./vendor/bin/sail up -d` to start Docker containers
 8. Run `./vendor/bin/sail artisan migrate` to perform migrations
-9. Run `sail npm run dev` to generate the JS/CSS assets
+9. Run `./vendor/bin/sail npm run dev` to generate the JS/CSS assets
 10. Go to [http://localhost](http://localhost) to see website
 
 This uses Laravel sail to manage Docker containers for you.
