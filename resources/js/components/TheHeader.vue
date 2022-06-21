@@ -64,6 +64,12 @@
                                 >
                                     Logout
                                 </Link>
+                                <Link                                
+                                    href="/settings"
+                                    class="dropdown-item"
+                                >
+                                    Settings
+                                </Link>                                
                             </li>
                         </ul>
                     </div>

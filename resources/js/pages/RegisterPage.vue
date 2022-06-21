@@ -97,7 +97,7 @@
                 type="submit"
                 class="btn btn-primary"
             >
-                Login
+                Register
             </button>
         </form>
     </div>
