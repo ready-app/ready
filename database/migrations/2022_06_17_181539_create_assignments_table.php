@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('course');
-            $table->timestamp('due')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->dateTime('due_at')->nullable();
             $table->timestamps();
         });
     }

@@ -11,12 +11,13 @@ class Assignment extends Model
 
     protected $fillable = [
         'name',
-        'course'
+        'course',
+        'due_at'
     ];
 
 
     protected $casts = [
-        'due' => 'datetime:Y-m-d H:i:s'
+        'created_at' => 'datetime:Y-m-d H:i:s',
     ];
 
 }

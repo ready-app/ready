@@ -12,6 +12,7 @@ class Course extends Model
 protected $fillable = [
         'name',
         'section',
-        'period'
+        'period',
+        'instructor'
     ];
 }
