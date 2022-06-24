@@ -17,5 +17,4 @@ class UserService {
             'password' => Hash::make($params['password'])
         ]);
     }
-
 }
