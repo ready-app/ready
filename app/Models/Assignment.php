@@ -23,4 +23,9 @@ class Assignment extends Model
         'due_at' => 'datetime:Y-m-d H:i:s'
     ];
 
+    public function courses()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
 }
