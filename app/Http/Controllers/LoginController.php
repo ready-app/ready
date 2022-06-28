@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UserLoginRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller {
@@ -10,13 +10,8 @@ class LoginController extends Controller {
         return inertia('LoginPage');
     }
 
-    public function login(Request $request) {
-        $creds = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if (Auth::attempt($creds)) {
+    public function login(UserLoginRequest $request) {
+        if (Auth::attempt($request->validated())) {
             $request->session()->regenerate();
             return redirect()->intended(route('dashboard.index'));
         }
