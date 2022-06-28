@@ -10,8 +10,8 @@ class Assignment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'course_id',
         'name',
-        'course',
         'due_at'
     ];
 
