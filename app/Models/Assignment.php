@@ -10,13 +10,22 @@ class Assignment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'course_id',
         'name',
-        'course'
+        'due_at'
     ];
+
+
+    public $timestamps = true;
 
 
     protected $casts = [
-        'due' => 'datetime:Y-m-d H:i:s'
+        'due_at' => 'datetime:Y-m-d H:i:s'
     ];
+
+    public function courses()
+    {
+        return $this->belongsTo(Course::class);
+    }
 
 }

@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('course_id')->unsigned()->index()->nullable();
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->string('section')->nullable();
             $table->string('name');
-            $table->string('course');
-            $table->timestamp('due')->nullable();
+            $table->dateTime('due_at')->nullable();
             $table->timestamps();
         });
     }
