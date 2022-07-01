@@ -7,7 +7,7 @@
             <h2 class="text-center">Change Password</h2>
             <p
                 class="text-danger"
-                v-if="failedLogin()"
+                v-if="failedPasswordChange()"
             >
                Wrong password 
             </p>
@@ -62,36 +62,40 @@
                     {{ form.errors.password }}
                 </div>
             </div>
+
             <button
                 type="submit"
                 class="btn btn-primary"
             >
-                Submit
+                Changed Password
             </button>
         </form>
     </div>
-
-    
 </template>
 
 <script setup lang="ts">
 import { Link, useForm } from "@inertiajs/inertia-vue3";
 
 const form = useForm({
-    email: "",
-    password: ""
+    password: "",
+    NewPassword: "",
+    ConfirmPassword: ""
 });
 
 const submit = () => {
     //Inertia.post("/login", form);
-    form.post("/login");
+    form.post("/settings");
+
 };
 
-const failedLogin = () => {
+const failedPasswordChange = () => {
+    if(form.NewPassword != form.ConfirmPassword){
+        return false;
+    }
     if (!form.hasErrors) {
         return false;
     }
-    if (form.errors.email || form.errors.password) {
+    if (form.errors.password) {
         return false;
     }
     return true;
