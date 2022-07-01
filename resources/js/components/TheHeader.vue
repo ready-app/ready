@@ -43,6 +43,13 @@
                     </li>
                 </ul>
                 <div class="navbar-nav">
+                    <Link
+                        class="nav-link"
+                        href="/admin"
+                        v-if="userStore.user !== null && userStore.user.is_admin"
+                    >
+                        Administration
+                    </Link>
                     <div
                         v-if="userStore.user !== null"
                         class="nav-item dropdown"
