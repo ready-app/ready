@@ -6,6 +6,7 @@ $finder = PhpCsFixer\Finder::create()
     ->exclude('routes')
     ->exclude('lang')
     ->exclude('bootstrap')
+    ->exclude('node_modules')
     ->in(__DIR__);
 
 $config = new PhpCsFixer\Config();
@@ -20,5 +21,8 @@ return $config->setRules([
     'array_syntax' => [
         'syntax' => 'short'
     ],
-    'no_blank_lines_after_class_opening' => false
+    'no_blank_lines_after_class_opening' => false,
+    'new_with_braces' => [
+        'anonymous_class' => false
+    ]
 ])->setFinder($finder);
