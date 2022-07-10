@@ -12,7 +12,7 @@ class PasswordRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'password' => 'required|string'
+            'name' => 'required|string'
         ];
     }
 }
