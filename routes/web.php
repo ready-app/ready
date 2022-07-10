@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -28,6 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/coursework', [CourseworkController::class, 'index'])->name('coursework.index');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
 
 Route::middleware('guest')->group(function () {
