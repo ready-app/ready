@@ -44,6 +44,7 @@ class GlobalTest extends TestCase {
                 fn (AssertableInertia $iUser) => $iUser
                 ->where('name', $user->name)
                 ->where('email', $user->email)
+                ->where('is_admin', false)
             )
         );
     }

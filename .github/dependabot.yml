@@ -4,6 +4,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    open-pull-requests-limit: 0
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -11,3 +12,4 @@ updates:
     ignore:
       - dependency-name: "*eslint*"
         update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    open-pull-requests-limit: 0
