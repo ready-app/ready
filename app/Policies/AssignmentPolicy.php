@@ -6,6 +6,7 @@ use App\Models\Assignment;
 use App\Models\User;
 use App\Models\Course;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class AssignmentPolicy
 {
@@ -21,9 +22,7 @@ class AssignmentPolicy
     */
     public function before(User $user, $ability)
     {
-        if ($user->is_admin == true) {
-            return true;
-        }
+        return $user->is_admin;
     }
 
     /**
@@ -69,7 +68,9 @@ class AssignmentPolicy
      */
     public function update(Course $course, Assignment $assignment)
     {
-        return $course->id === $assignment->course_id;
+        return $assignment->course_id === $course->id
+        ? Response::allow()
+        : Response::deny('Assignment does not blong to this course.');
     }
 
     /**

@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    /**
+
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        return inertia("CoursePage");
     }
 
     /**
@@ -21,8 +21,7 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         //
     }
 
@@ -32,8 +31,7 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         //
     }
 
@@ -45,7 +43,7 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
