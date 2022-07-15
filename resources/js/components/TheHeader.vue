@@ -1,97 +1,57 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <Link
-                href="/"
-                class="navbar-brand"
-            >
-                READY
-            </Link>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbar"
-                aria-controls="navbar"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon" />
-            </button>
-            <div
-                class="collapse navbar-collapse"
-                id="navbar"
-            >
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <Link
-                            href="/"
-                            class="nav-link"
-                            :class="{ active: isActive('/') }"
-                        >
-                            Home
-                        </Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link
-                            href="/schedule"
-                            class="nav-link"
-                            :class="{ active: isActive('/schedule') }"
-                        >
-                            Schedule
-                        </Link>
-                    </li>
-                </ul>
-                <div class="navbar-nav">
-                    <div
-                        v-if="userStore.user !== null"
-                        class="nav-item dropdown"
-                    >
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            {{ userStore.user.name }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <Link
-                                    href="/logout"
-                                    class="dropdown-item"
-                                >
-                                    Logout
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <div v-else>
-                        <Link
-                            href="/login"
-                            class="btn btn-primary me-2"
-                        >
-                            Login
-                        </Link>
-                        <Link
-                            href="/register"
-                            class="btn btn-secondary"
-                        >
-                            Register
-                        </Link>
-                    </div>
-                </div>
+    <Menubar :model="items">
+        <template #start>
+            <h2>READY</h2>
+        </template>
+        <template #end>
+            <div v-if="userStore.user === null">
+                <InertiaLink
+                    style="text-decoration: none;"
+                    href="/login"
+                >
+                    <Button class="login-button">Login</Button>
+                </InertiaLink>
+                <InertiaLink
+                    style="text-decoration: none;"
+                    href="/register"
+                >
+                    <Button class="p-button-secondary">Register</Button>
+                </InertiaLink>
             </div>
-        </div>
-    </nav>
+            <div v-else>
+                <Button
+                    class="p-button-text p-button-secondary"
+                    aria-haspopup="true"
+                    aria-controls="overlay-profile-menu"
+                    @click="toggleProfileMenu"
+                >
+                    {{ userStore.user.name }}
+                    <Avatar
+                        icon="pi pi-user"
+                        class="ml-2 border-circle"
+                        size="normal"
+                    />
+                </Button>
+                <Menu
+                    id="overlay-profile-menu"
+                    :popup="true"
+                    ref="profileMenu"
+                    :model="profileItems"
+                />
+            </div>
+        </template>
+    </Menubar>
 </template>
 
 <script setup lang="ts">
-import { Link } from "@inertiajs/inertia-vue3";
+import Button from "primevue/button";
+import Avatar from "primevue/avatar";
+import Menu from "primevue/menu";
 import { Inertia } from "@inertiajs/inertia";
 import { ref } from "vue";
-import { useUserStore } from "../store/user";
+import { useUserStore } from "@/store/user";
+import Menubar from "primevue/menubar";
+import { InertiaLink } from "@inertiajs/inertia-vue3";
 
 const userStore = useUserStore();
 
@@ -101,12 +61,47 @@ Inertia.on("success", () => {
     path.value = window.location.pathname;
 });
 
-const isActive = (linkPath: string) => {
-    return path.value === linkPath;
+const profileMenu = ref();
+
+const toggleProfileMenu = (event: any) => {
+    profileMenu.value.toggle(event);
+};
+
+const items = ref([
+    {
+        label: "Home",
+        icon: "pi pi-fw pi-home",
+        to: "/"
+    },
+    {
+        label: "Schedule",
+        icon: "pi pi-fw pi-calendar",
+        to: "/schedule",
+        visible: () => userStore.user !== null
+    }
+]);
+
+const profileItems = ref([
+    {
+        label: "Logout",
+        to: "/logout"
+    }
+]);
+
+const test = (item: any) => {
+    console.log(item);
 };
 
 </script>
 
 <style scoped>
+h2 {
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;
+}
 
+.login-button {
+    margin-right: 8px;
+}
 </style>

@@ -5,6 +5,8 @@ import TheLayout from "@/TheLayout.vue";
 import "bootstrap/dist/js/bootstrap";
 import { createPinia } from "pinia";
 import { resolvePageComponent } from "@/utils/resolve-page-components";
+import PrimeVue from "primevue/config";
+import RouterLink from "@/components/RouterLink.vue";
 
 createInertiaApp({
     resolve: async name => {
@@ -17,6 +19,8 @@ createInertiaApp({
         createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(pinia)
+            .use(PrimeVue)
+            .component("router-link", RouterLink)
             .mount(el);
     }
 });

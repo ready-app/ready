@@ -1,7 +1,7 @@
 <template>
     <div id="layout-page">
         <TheHeader />
-        <div class="container mt-2">
+        <div style="font-family: system-ui, serif;">
             <slot />
         </div>
         <TheFooter id="footer" />
