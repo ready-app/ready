@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/coursework', [CourseworkController::class, 'index'])->name('coursework.index');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('/course',[CourseController::class,'index'])->name('course.index');
 });
 
 Route::middleware('guest')->group(function () {
