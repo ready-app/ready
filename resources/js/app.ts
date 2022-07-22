@@ -10,9 +10,6 @@ createInertiaApp({
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     resolve: name => {
-        // const page = await resolvePageComponent(`./pages/${name}.vue`, import.meta.glob("./pages/**/*.vue"));
-        // page.default.layout = page.default.layout || TheLayout;
-        // return page;
         return resolvePageComponent(
             `./pages/${name}.vue`,
             import.meta.glob("./pages/*.vue")
