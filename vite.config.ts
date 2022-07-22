@@ -9,9 +9,9 @@ config();
 
 const url = new URL(process.env.APP_URL as string);
 
-const localConfig = {
+const localConfig: { host: string, https: boolean | object } = {
     host: url.host,
-    https: {}
+    https: false
 };
 
 // for Laravel Valet
