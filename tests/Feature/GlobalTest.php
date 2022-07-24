@@ -9,8 +9,6 @@ use Inertia\Testing\AssertableInertia;
 use Tests\TestCase;
 
 class GlobalTest extends TestCase {
-    use RefreshDatabase;
-
     /**
      * Tests that inertia returns expected props without auth
      *
