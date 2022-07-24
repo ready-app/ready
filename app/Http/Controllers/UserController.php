@@ -7,14 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Response;
 
 class UserController extends Controller {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index(): Response {
-        return response(User::all()->makeVisible(['updated_at', 'created_at']));
-    }
 
     /**
      * Display the specified resource.
