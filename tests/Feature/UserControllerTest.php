@@ -10,7 +10,7 @@ class UserControllerTest extends TestCase {
      * Test that guests can't access controller routes
      */
     public function test_guest_cannot_access_route() {
-        $response = $this->get(route('users.show', 1));
+        $response = $this->patch(route('users.update', 1));
 
         $response->assertRedirect(route('login'));
     }
@@ -21,25 +21,9 @@ class UserControllerTest extends TestCase {
     public function test_normal_user_cannot_access_route() {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->get(route('users.show', $user->id));
+        $response = $this->actingAs($user)->patch(route('users.update', $user->id));
 
         $response->assertRedirect(route('home.index'));
-    }
-
-    /**
-     * Test that user show result returns correct data
-     */
-    public function test_showing_specific_user() {
-        $admin = User::factory()->create();
-        $admin->is_admin = true;
-        $admin->save();
-
-        $user = User::factory()->create();
-
-        $response = $this->actingAs($admin)->get(route('users.show', $user->id));
-
-        $response->assertStatus(200);
-        $response->assertJson($user->toArray());
     }
 
     /**
@@ -52,21 +36,24 @@ class UserControllerTest extends TestCase {
 
         $user = User::factory()->create();
 
-        $response = $this->actingAs($admin)->get(route('users.show', $user->id));
-
-        $response->assertStatus(200);
-        $this->assertEquals($user->name, $response->json()['name']);
-
-        $response = $this->actingAs($admin)->patch(route('users.update', $user->id), [
-            'name' => "New Name"
+        $this->assertDatabaseHas('users', [
+            'name' => $user->name
         ]);
 
-        $response->assertStatus(200);
+        $response = $this->actingAs($admin)->patch(route('users.update', $user->id), [
+            'name' => 'New Name'
+        ]);
 
-        $response = $this->actingAs($admin)->get(route('users.show', $user->id));
+        $response->assertRedirect(route('admin.index'));
+        $response->assertSessionHas('success');
 
-        $response->assertStatus(200);
-        $this->assertEquals("New Name", $response->json()['name']);
+        $this->assertDatabaseMissing('users', [
+            'name' => $user->name
+        ]);
+
+        $this->assertDatabaseHas('users', [
+            'name' => 'New Name'
+        ]);
     }
 
     /**
@@ -79,16 +66,13 @@ class UserControllerTest extends TestCase {
 
         $user = User::factory()->create();
 
-        $response = $this->actingAs($admin)->get(route('users.show', $user->id));
-
-        $response->assertStatus(200);
+        $this->assertDatabaseCount('users', 2);
 
         $response = $this->actingAs($admin)->delete(route('users.destroy', $user->id));
 
-        $response->assertStatus(200);
+        $response->assertRedirect(route('admin.index'));
+        $response->assertSessionHas('success');
 
-        $response = $this->actingAs($admin)->get(route('users.show', $user->id));
-
-        $response->assertStatus(404);
+        $this->assertDatabaseCount('users', 1);
     }
 }

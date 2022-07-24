@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 
-    Route::apiResource('users', UserController::class)->except(['create', 'index']);
+    Route::apiResource('users', UserController::class)->only(['update', 'destroy']);
 });
 
 Route::middleware('guest')->group(function () {
