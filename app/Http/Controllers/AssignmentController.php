@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CourseController extends Controller
+class AssignmentController extends Controller
 {
-
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        return inertia("CoursePage");
+    public function index()
+    {
+        return inertia("AssignmentPage");
     }
 
     /**
@@ -21,11 +21,20 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(){
+    public function create()
+    {
         //
     }
 
 
+    public function findAssignmentByCourse($course_id)
+    {
+        $course_id = Assignment::where('course_id', $course_id)->get();
+        foreach ($users as $user) {
+            $user->type_name=$user->booktype->type_name;
+        }
+        return response()->json(['status'=>1,'msg'=>'S','data'=>$users]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -33,7 +42,8 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         //
     }
 
@@ -45,7 +55,7 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**

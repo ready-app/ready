@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/course',[CourseController::class,'index'])->name('course.index');
+    Route::get('/assignment',[AssignmentController::class,'index'])->name('assignment.index');
 });
 
 Route::middleware('guest')->group(function () {
@@ -40,9 +41,4 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
-});
-
-
-Route::get('course/{id}', function ($id) {
-    return $id;
 });
