@@ -9,6 +9,7 @@ use App\Http\Controllers\CourseworkController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule.index');
     Route::get('/import', [ImportCourseController::class, 'index'])->name('import.index');
     Route::get('/coursework', [CourseworkController::class, 'index'])->name('coursework.index');
-
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
