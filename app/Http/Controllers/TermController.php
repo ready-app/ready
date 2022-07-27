@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TermStoreRequest;
+use App\Http\Requests\TermUpdateRequest;
 use App\Models\Term;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -57,11 +58,11 @@ class TermController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param TermStoreRequest $request
+     * @param TermUpdateRequest $request
      * @param Term $term
      * @return RedirectResponse
      */
-    public function update(TermStoreRequest $request, Term $term) {
+    public function update(TermUpdateRequest $request, Term $term) {
         $term->fill($request->validated());
         if ($term->save()) {
             return redirect(route('terms.index'))->with('success', 'Term edited successfully');
