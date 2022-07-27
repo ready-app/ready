@@ -44,7 +44,7 @@ class UserControllerTest extends TestCase {
             'name' => 'New Name'
         ]);
 
-        $response->assertRedirect(route('admin.index'));
+        $response->assertRedirect();
         $response->assertSessionHas('success');
 
         $this->assertDatabaseMissing('users', [
@@ -70,7 +70,7 @@ class UserControllerTest extends TestCase {
 
         $response = $this->actingAs($admin)->delete(route('users.destroy', $user->id));
 
-        $response->assertRedirect(route('admin.index'));
+        $response->assertRedirect(route('users.index'));
         $response->assertSessionHas('success');
 
         $this->assertDatabaseCount('users', 1);
