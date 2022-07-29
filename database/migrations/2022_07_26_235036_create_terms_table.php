@@ -21,7 +21,11 @@ return new class extends Migration {
         });
 
         Schema::table('courses', function (Blueprint $table) {
-            $table->foreignId('term_id')->constrained();
+            $table->foreignId('term_id')->nullable()->constrained();
+        });
+
+        Schema::table('courses', function (Blueprint $table) {
+            $table->bigInteger('term_id')->nullable(false)->change();
         });
     }
 
@@ -31,9 +35,9 @@ return new class extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('terms');
         Schema::table('courses', function (Blueprint $table) {
             $table->dropConstrainedForeignId('term_id');
         });
+        Schema::dropIfExists('terms');
     }
 };
