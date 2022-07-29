@@ -39,6 +39,8 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 
     Route::apiResource('users', UserController::class)->only(['update', 'destroy']);
+    Route::apiResource('users', CourseController::class)->only(['update', 'destroy']);
+    Route::apiResource('users', AssignmnetController::class)->only(['update', 'destroy']);
 });
 
 Route::middleware('guest')->group(function () {

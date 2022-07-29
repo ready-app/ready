@@ -76,9 +76,11 @@ class AssignmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(UserUpdateRequest $request, User $user): RedirectResponse {
+        if ($user->update($request->validated())) {
+            return redirect()->route('admin.index')->with('success', 'User updated');
+        }
+        return redirect()->route('admin.index')->with('error', 'Failed to update user');
     }
 
     /**
@@ -87,8 +89,10 @@ class AssignmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(User $user): RedirectResponse {
+        if ($user->delete()) {
+            return redirect()->route('admin.index')->with('success', 'User deleted');
+        }
+        return redirect()->route('admin.index')->with('error', 'Failed to delete user');
     }
 }
