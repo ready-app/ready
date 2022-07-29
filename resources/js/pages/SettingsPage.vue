@@ -77,7 +77,7 @@
     >
         <div class="align-items-left justify-content-left ">
             <form
-                @submit.prevent="submit"
+                @submit.prevent="namesubmit"
                 class=" bg-pink "
             >
                 <p
@@ -91,25 +91,21 @@
                         type="password"
                         id="password-field"
                         class="form-control"
-                        :class="{ 'is-invalid': form.errors.password }"
-                        v-model="form.password"
+                        :class="{ 'is-invalid': Nameform.errors.newname}"
+                        v-model="Nameform.newname"
                         placeholder="password"
                     >
-                    <label for="password-field">Orginal Password</label>
+                    <label for="password-field">New name</label>
                     <div
-                        v-if="form.errors.password"
+                        v-if="Nameform.errors.newname"
                         class="invalid-feedback"
                     >
-                        {{ form.errors.password }}
+                        {{ Nameform.errors.newname }}
                     </div>
-                </div>
                 </div>
             </form>
         </div> 
     </TheModal>
-
-
-
 </template>
 
 <script setup lang="ts">
@@ -121,8 +117,6 @@ const Passform = useForm({
     password: "",
     NewPassword: "",
     ConfirmPassword: "",
-    name: "",
-    newname: "",
 });
 
 const Nameform = useForm({
@@ -136,6 +130,13 @@ const Passsubmit = () => {
 
 };
 
+const namesubmit = () => {
+    //Inertia.post("/login", form);
+    Nameform.post("/settings");
+
+};
+
+
 const failedPasswordChange = () => {
     if(Passform.NewPassword != Passform.ConfirmPassword){
         return false;
@@ -148,6 +149,20 @@ const failedPasswordChange = () => {
     }
     return true;
 };
+
+const failedNameChange = () => {
+    if (!Nameform.hasErrors) {
+        return false;
+    }
+    if (Nameform.errors.newname) {
+        return false;
+    }
+    if(Nameform.newname == ""){
+        return false;
+    }
+    return true;
+};
+
 
 </script>
 
