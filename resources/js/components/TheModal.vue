@@ -43,7 +43,7 @@
 import { defineProps, onMounted, ref } from "vue";
 import { Modal } from "bootstrap";
 
-const props = defineProps<{
+defineProps<{
     title: string,
     buttonText: string,
     buttonClasses: string

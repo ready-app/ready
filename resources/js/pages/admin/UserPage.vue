@@ -56,12 +56,13 @@
 </template>
 
 <script setup lang="ts">
-import { InertiaLink, useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
+import { User } from "@/types";
 
 const props = defineProps<{
-    editingUser: any
+    editingUser: User
 }>();
 
 const form = useForm({

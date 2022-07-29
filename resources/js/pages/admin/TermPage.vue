@@ -66,11 +66,12 @@
 </template>
 
 <script setup lang="ts">
-import { InertiaLink, useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
+import { Term } from "@/types";
 
 const props = defineProps<{
-    term: any
+    term: Term
 }>();
 
 const form = useForm({ ...props.term });

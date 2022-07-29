@@ -25,7 +25,7 @@ return new class extends Migration {
         });
 
         Schema::table('courses', function (Blueprint $table) {
-            $table->bigInteger('term_id')->nullable(false)->change();
+            $table->bigInteger('term_id')->nullable(false)->change(); // Hack to make it work with SQLite
         });
     }
 

@@ -43,9 +43,10 @@
 <script setup lang="ts">
 import { InertiaLink } from "@inertiajs/inertia-vue3";
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
+import { Term } from "@/types";
 
-const props = defineProps<{
-    terms: any
+defineProps<{
+    terms: Term[]
 }>();
 
 const breadcrumbPages = [

@@ -42,7 +42,6 @@
             </tr>
         </tbody>
     </table>
-    <!-- paginate -->
     <nav>
         <ul class="pagination">
             <li
@@ -50,6 +49,7 @@
                 class="page-item"
                 :key="link.label"
             >
+                <!-- eslint-disable vue/no-v-text-v-html-on-component -->
                 <InertiaLink
                     :href="link.url"
                     class="page-link"
@@ -68,9 +68,10 @@ import { ref, watch } from "vue";
 import { debounce } from "lodash";
 import { Inertia } from "@inertiajs/inertia";
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
+import { User } from "@/types";
 
-const props = defineProps<{
-    users: any
+defineProps<{
+    users: User[]
 }>();
 
 let query = ref();

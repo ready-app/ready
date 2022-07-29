@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { InertiaLink, useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
 
 const form = useForm({
