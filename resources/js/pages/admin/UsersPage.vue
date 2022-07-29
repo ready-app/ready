@@ -68,10 +68,10 @@ import { ref, watch } from "vue";
 import { debounce } from "lodash";
 import { Inertia } from "@inertiajs/inertia";
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
-import { User } from "@/types";
+import { Paginate, User } from "@/types";
 
 defineProps<{
-    users: User[]
+    users: Paginate<User>
 }>();
 
 let query = ref();

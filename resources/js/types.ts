@@ -14,3 +14,14 @@ export type Term = {
     start: string,
     end: string
 }
+
+export type Link = {
+    label: string,
+    url: string,
+    active: boolean
+}
+
+export type Paginate<T> = {
+    links: Link[],
+    data: T[]
+}

@@ -48,7 +48,7 @@
         <button
             class="btn btn-danger"
             type="button"
-            @click="del(form.id)"
+            @click="del"
         >
             Delete
         </button>
@@ -73,8 +73,8 @@ const submit = () => {
     form.patch("/admin/users/" + form.id);
 };
 
-const del = (id: string) => {
-    Inertia.delete("/admin/users/" + id);
+const del = () => {
+    Inertia.delete("/admin/users/" + form.id);
 };
 
 const breadcrumbPages = [
