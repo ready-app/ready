@@ -15,9 +15,11 @@ import { useUserStore } from "@/store/user";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-vue3";
 import { User } from "@/types";
+import { watch } from "vue";
+import { POSITION, useToast } from "vue-toastification";
 
 const userStore = useUserStore();
-const page = usePage<{ user: User | null }>();
+const page = usePage<{ user: User | null, flashMessage: { success: string | null, error: string | null } }>();
 
 userStore.setUser(page.props.value.user);
 
@@ -27,6 +29,23 @@ Inertia.on("success", () => {
         return;
     }
     userStore.setUser(null);
+});
+
+const toast = useToast();
+
+watch(() => page.props.value.flashMessage, msg => {
+    if (msg.success) {
+        toast.success(msg.success, {
+            timeout: 2000,
+            position: POSITION.TOP_CENTER
+        });
+    }
+    else if (msg.error) {
+        toast.error(msg.error, {
+            timeout: 2000,
+            position: POSITION.TOP_CENTER
+        });
+    }
 });
 
 </script>

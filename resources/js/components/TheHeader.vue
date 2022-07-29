@@ -46,6 +46,7 @@
                     <Link
                         class="nav-link"
                         href="/admin"
+                        :class="{ active: isActive('/admin') }"
                         v-if="userStore.user !== null && userStore.user.is_admin"
                     >
                         Administration
