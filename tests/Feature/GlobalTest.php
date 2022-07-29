@@ -9,8 +9,6 @@ use Inertia\Testing\AssertableInertia;
 use Tests\TestCase;
 
 class GlobalTest extends TestCase {
-    use RefreshDatabase;
-
     /**
      * Tests that inertia returns expected props without auth
      *
@@ -44,6 +42,7 @@ class GlobalTest extends TestCase {
                 fn (AssertableInertia $iUser) => $iUser
                 ->where('name', $user->name)
                 ->where('email', $user->email)
+                ->where('is_admin', false)
             )
         );
     }
