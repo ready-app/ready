@@ -29,7 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule.index');
     Route::get('/import', [ImportCourseController::class, 'index'])->name('import.index');
     Route::get('/coursework', [CourseworkController::class, 'index'])->name('coursework.index');
+
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [SettingsController::class, 'Nameupdate'])->name('settings.Nameupdate');
+
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 

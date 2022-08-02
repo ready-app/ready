@@ -13,7 +13,7 @@
                     class="text-danger"
                     v-if="failedPasswordChange()"
                 >
-                Wrong password 
+                    Wrong password 
                 </p>
                 <div class="mb-3 form-floating">
                     <input
@@ -49,7 +49,7 @@
                         {{ Passform.errors.password }}
                     </div>
                 </div>
-                <div class = "mb-3 form-floating">
+                <div class="mb-3 form-floating">
                     <input
                         type="password"
                         id="password-field"
@@ -84,7 +84,7 @@
                     class="text-danger"
                     v-if="failedNameChange()"
                 >
-                Invalid name
+                    Invalid name
                 </p>
                 <div class="mb-3 form-floating">
                     <input
@@ -110,7 +110,7 @@
 
 <script setup lang="ts">
 
-import { Link, useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
 import TheModal from "@/components/TheModal.vue";
 
 const Passform = useForm({
@@ -120,7 +120,6 @@ const Passform = useForm({
 });
 
 const Nameform = useForm({
-
     newname: "",
 });
 
@@ -162,7 +161,6 @@ const failedNameChange = () => {
     }
     return true;
 };
-
 
 </script>
 
