@@ -32,7 +32,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingsController::class, 'Nameupdate'])->name('settings.Nameupdate');
-
+    Route::post('/settings', [SettingsController::class, 'Passwordupdate'])->name('settings.Passwordupdate');
+    
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 

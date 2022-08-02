@@ -13,7 +13,7 @@
                     class="text-danger"
                     v-if="failedPasswordChange()"
                 >
-                    Wrong password 
+                    Error
                 </p>
                 <div class="mb-3 form-floating">
                     <input
@@ -151,9 +151,6 @@ const failedPasswordChange = () => {
 
 const failedNameChange = () => {
     if (!Nameform.hasErrors) {
-        return false;
-    }
-    if (Nameform.errors.newname) {
         return false;
     }
     if(Nameform.newname == ""){

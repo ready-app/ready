@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\NameChangeRequest;
+use App\Http\Requests\PasswordChangeRequest;
+
 class SettingsController extends Controller {
     public function index() {
         return inertia("SettingsPage");
