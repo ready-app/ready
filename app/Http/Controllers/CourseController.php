@@ -13,7 +13,7 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return inertia("CoursePage");
+        return inertia("AdminPage");
     }
 
     /**
@@ -21,8 +21,11 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(){
-        //
+    public function create(User $user): RedirectResponse {
+        if ($user->dreate()) {
+            return redirect()->route('admin.index')->with('success', 'User deleted');
+        }
+        return redirect()->route('admin.index')->with('error', 'Failed to delete user');
     }
 
 
