@@ -18,7 +18,7 @@ class CoursePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class CoursePolicy
      */
     public function view(User $user, Course $course)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,9 @@ class CoursePolicy
      */
     public function create(User $user)
     {
-        //
+        return $use->is_admin
+        ? Response::allow()
+        : Response::deny();
     }
 
     /**
@@ -53,7 +55,9 @@ class CoursePolicy
      */
     public function update(User $user, Course $course)
     {
-        //
+        return $use->is_admin
+        ? Response::allow()
+        : Response::deny();
     }
 
     /**
@@ -65,7 +69,9 @@ class CoursePolicy
      */
     public function delete(User $user, Course $course)
     {
-        //
+        return $use->is_admin
+        ? Response::allow()
+        : Response::deny();
     }
 
     /**

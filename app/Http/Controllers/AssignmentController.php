@@ -45,7 +45,7 @@ class AssignmentController extends Controller
 
   
     public function destroy(User $user): RedirectResponse {
-        if ($user->delete()) {
+        if ($user->is_admin) {
             return redirect()->route('assignment.index')->with('success', 'Assignment deleted');
         }
         return redirect()->route('assignment.index')->with('error', 'User is not an admin');

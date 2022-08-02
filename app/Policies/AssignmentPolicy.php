@@ -56,7 +56,9 @@ class AssignmentPolicy
      */
     public function create(User $user)
     {
-        //
+        return $use->is_admin
+        ? Response::allow()
+        : Response::deny();
     }
 
     /**
@@ -66,11 +68,11 @@ class AssignmentPolicy
      * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Course $course, Assignment $assignment)
+    public function update(User $user, Course $course, Assignment $assignment)
     {
-        return $assignment->course_id === $course->id
+        return $assignment->course_id === $course->id && $use->is_admin
         ? Response::allow()
-        : Response::deny('Assignment does not blong to this course.');
+        : Response::deny();
     }
 
     /**
@@ -82,7 +84,9 @@ class AssignmentPolicy
      */
     public function delete(User $user, Assignment $assignment)
     {
-        //
+        return $use->is_admin
+        ? Response::allow()
+        : Response::deny();
     }
 
     /**
