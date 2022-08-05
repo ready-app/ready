@@ -31,8 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/coursework', [CourseworkController::class, 'index'])->name('coursework.index');
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::post('/settings', [SettingsController::class, 'Nameupdate'])->name('settings.Nameupdate');
-    Route::post('/settings', [SettingsController::class, 'Passwordupdate'])->name('settings.Passwordupdate');
+    Route::post('/settings', [SettingsController::class, 'updateName'])->name('settings.updateName');
+    Route::post('/settings', [SettingsController::class, 'updatePassword'])->name('settings.updatePassword');
     
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });

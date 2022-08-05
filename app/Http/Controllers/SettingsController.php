@@ -12,20 +12,21 @@ class SettingsController extends Controller {
         return inertia("SettingsPage");
     }
 
-    public function Nameupdate(NameChangeRequest $request) {
-        $user = auth()->user();
-        $user->update($request->validated());
-
-        return redirect()->route('settings.index');
-
+    public function updateName(NameChangeRequest $request) {
+        $user = Auth::user();
+        $user->name = $request->name;
+        if ($user->save()) {
+            return redirect()->route('settings.index')->with('success', 'Name updated');
+        }
+        return redirect()->route('settings.index')->with('error', 'Failed to update name');
     }
 
-    public function Passwordupdate(PasswordChangeRequest $request) {
-        $user = auth()->user();
-        $user->update($request->validated());
-
-        return redirect()->route('settings.index');
-
-    }    
+    public function updatePassword(PasswordChangeRequest $request) {
+        $user = Auth::user();
+        if ($user->updatePassword($request->new_password)) {
+            return redirect()->route('settings.index')->with('success', 'Password updated');
+        }
+        return redirect()->route('settings.index')->with('error', 'Failed to update password');
+    }
 
 }

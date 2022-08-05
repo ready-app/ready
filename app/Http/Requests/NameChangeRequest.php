@@ -14,7 +14,7 @@ class NameChangeRequest extends FormRequest
     public function rules()
     {
         return [
-            'new_name' => 'required|string|min:1|max:255',
+            'name' => 'required|string|min:1|max:255',
         ];
     }
 }

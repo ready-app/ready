@@ -91,16 +91,16 @@
                         type="password"
                         id="password-field"
                         class="form-control"
-                        :class="{ 'is-invalid': Nameform.errors.newname}"
-                        v-model="Nameform.newname"
+                        :class="{ 'is-invalid': Nameform.errors.name}"
+                        v-model="Nameform.name"
                         placeholder="password"
                     >
                     <label for="password-field">New name</label>
                     <div
-                        v-if="Nameform.errors.newname"
+                        v-if="Nameform.errors.name"
                         class="invalid-feedback"
                     >
-                        {{ Nameform.errors.newname }}
+                        {{ Nameform.errors.name }}
                     </div>
                 </div>
             </form>
@@ -120,7 +120,7 @@ const Passform = useForm({
 });
 
 const Nameform = useForm({
-    newname: "",
+    name: "",
 });
 
 const Passsubmit = () => {
@@ -153,10 +153,10 @@ const failedNameChange = () => {
     if (!Nameform.hasErrors) {
         return false;
     }
-    if(Nameform.newname == ""){
-        return false;
+    if(Nameform.name == ""){
+        return true;
     }
-    return true;
+    return false;
 };
 
 </script>
