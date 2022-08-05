@@ -13,7 +13,7 @@ class UserUpdateRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'name' => 'string',
+            'name' => 'string|min:1|max:255',
             'is_admin' => 'boolean'
         ];
     }
