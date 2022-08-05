@@ -33,7 +33,7 @@ class AssignmentPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class AssignmentPolicy
      */
     public function view(User $user, Assignment $assignment)
     {
-        //
+        return true;
     }
 
     /**
@@ -68,9 +68,9 @@ class AssignmentPolicy
      * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Course $course, Assignment $assignment)
+    public function update(User $user, Assignment $assignment)
     {
-        return $assignment->course_id === $course->id && $use->is_admin
+        return $use->is_admin
         ? Response::allow()
         : Response::deny();
     }
@@ -89,27 +89,4 @@ class AssignmentPolicy
         : Response::deny();
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Assignment  $assignment
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Assignment $assignment)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Assignment  $assignment
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Assignment $assignment)
-    {
-        //
-    }
 }

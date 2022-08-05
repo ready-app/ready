@@ -29,7 +29,7 @@ class AssignmentController extends Controller
     {
         $assignments_list = Assignment::where('course_id', $course_id)->get();
         foreach ($assignment as $assignments_list) {
-            $assignment->name=$assignments_list->assignment;
+            $assignment->name=$assignments_list->assignment->name;
         }
         return response()->json(['data'=>$assignment]);
     }
