@@ -28,5 +28,4 @@ class SettingsController extends Controller {
         }
         return redirect()->route('settings.index')->with('error', 'Failed to update password');
     }
-
 }
