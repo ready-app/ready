@@ -13,8 +13,8 @@ class PasswordChangeRequest extends FormRequest {
     public function rules() {
         return [
             'password' => 'required|string|min:8',
-            'password_confirmation' => 'required|string|same:password',
             'new_password' => 'required|string|min:8',
+            'new_password_confirmation' => 'required|string|same:password',
         ];
     }
 }

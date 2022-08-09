@@ -17,4 +17,16 @@ class UserService {
             'password' => Hash::make($params['password'])
         ]);
     }
+
+    public function updateName(array $params) {
+        $user = auth()->user();
+        $user->name = $params['name'];
+        $user->save();
+    }
+
+    public function updatePassword(array $params) {
+        $user = auth()->user();
+        $user->password = Hash::make($params['password']);
+        $user->save();
+    }
 }
