@@ -9,6 +9,10 @@
         "eslint-fix": "eslint resources/js --ext .ts,.vue --fix"
     },
     "devDependencies": {
+        "@fullcalendar/core": "^5.11.2",
+        "@fullcalendar/daygrid": "^5.11.2",
+        "@fullcalendar/timegrid": "^5.11.2",
+        "@fullcalendar/vue3": "^5.11.2",
         "@inertiajs/inertia": "0.11.0",
         "@inertiajs/inertia-vue3": "0.6.0",
         "@inertiajs/progress": "0.2.7",
