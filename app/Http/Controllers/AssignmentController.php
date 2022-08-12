@@ -13,15 +13,12 @@ class AssignmentController extends Controller
      */
     public function index()
     {
-        return inertia("AdminPage");
+        //
     }
 
 
-    public function create(User $user): RedirectResponse {
-        if ($user->is_admin) {
-            return redirect()->route('assignment.index')->with('success', 'Assignment created');
-        }
-        return redirect()->route('assignment.index')->with('error', 'User is not an admin');
+    public function create(){
+        return Redirect::to('assignment.index');
     }
 
 
@@ -34,20 +31,38 @@ class AssignmentController extends Controller
         return response()->json(['data'=>$assignment]);
     }
 
-
-
-    public function update(User $user): RedirectResponse {
-        if ($user->is_admin) {
-            return redirect()->route('assignment.index')->with('success', 'Assignment updated');
+    public function findAssignmentByUser($user_id)
+    {
+        $assignments_list = Assignment::where('uesr_id', $user_id)->get();
+        foreach ($assignment as $assignments_list) {
+            $assignment->name=$assignments_list->assignment->name;
         }
-        return redirect()->route('assignment.index')->with('error', 'User is not an admin');
+        return response()->json(['data'=>$assignment]);
+    }
+
+
+    public function show($id)
+    {
+        $assignment = Assignment::find($id);
+
+        //return View::make('')->with('assignment', $assignment);
+    }
+
+
+
+    public function update($id){
+        $assignment = Assignment::find($id);
+        $assignment->name = Input::get('name');
+        $assignment->due_at = Input::get('due_at');
+
+        return Redirect::to('assignment.index');
     }
 
   
-    public function destroy(User $user): RedirectResponse {
-        if ($user->is_admin) {
-            return redirect()->route('assignment.index')->with('success', 'Assignment deleted');
-        }
-        return redirect()->route('assignment.index')->with('error', 'User is not an admin');
+    public function destroy($id){
+        $assignment = Assignment::find($id);
+        $assignment -> delete();
+
+        return Redirect::to('assignment.index');
     }
 }

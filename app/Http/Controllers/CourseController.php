@@ -13,30 +13,27 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return inertia("AdminPage");
+        //
     }
 
-    public function create(User $user): RedirectResponse {
-        if ($user->is_admin) {
-            return redirect()->route('course.index')->with('success', 'Assignment created');
-        }
-        return redirect()->route('course.index')->with('error', 'User is not an admin');
+    public function create() {
+        return Redirect::to('course.index');
     }
 
 
 
-    public function update(User $user): RedirectResponse {
-        if ($user->is_admin) {
-            return redirect()->route('course.index')->with('success', 'Assignment updated');
-        }
-        return redirect()->route('course.index')->with('error', 'User is not an admin');
+    public function update($id) {
+        $course = Course::find($id);
+        $course->name = Input::get('name');
+
+        return Redirect::to('course.index');
     }
 
   
     public function destroy(User $user): RedirectResponse {
-        if ($user->delete()) {
-            return redirect()->route('course.index')->with('success', 'Assignment deleted');
-        }
-        return redirect()->route('course.index')->with('error', 'User is not an admin');
+        $course = Course::find($id);
+        $course -> delete();
+
+        return Redirect::to('assignment.index');
     }
 }

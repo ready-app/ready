@@ -32,14 +32,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/course',[CourseController::class,'index'])->name('course.index');
     Route::get('/assignment',[AssignmentController::class,'index'])->name('assignment.index');
+
+    
 });
 
 Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 
     Route::apiResource('users', UserController::class)->only(['update', 'destroy']);
-    Route::apiResource('users', CourseController::class)->only(['create','update', 'destroy']);
-    Route::apiResource('users', AssignmnetController::class)->only(['create','update', 'destroy']);
 });
 
 Route::middleware('guest')->group(function () {

@@ -14,18 +14,6 @@ class AssignmentPolicy
 
 
     /**
-    * Perform pre-authorization checks.
-    *
-    * @param  \App\Models\User  $user
-    * @param  string  $ability
-    * @return void|bool
-    */
-    public function before(User $user, $ability)
-    {
-        return $user->is_admin;
-    }
-
-    /**
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
@@ -33,7 +21,9 @@ class AssignmentPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->is_admin
+        ? Response::allow()
+        : Response::deny();
     }
 
     /**
@@ -43,9 +33,12 @@ class AssignmentPolicy
      * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Assignment $assignment)
+    public function view(User $user, Course $course, Assignment $assignment)
     {
-        return true;
+        return (($user->courses()->where('course_id', $course->id)->exist())
+        &&($user->assignments()->where('assignment_id',$assigment->id)->exist()))
+        ? Response::allow()
+        : Response::deny();
     }
 
     /**
@@ -54,11 +47,9 @@ class AssignmentPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create()
     {
-        return $use->is_admin
-        ? Response::allow()
-        : Response::deny();
+        return true;
     }
 
     /**
@@ -68,9 +59,10 @@ class AssignmentPolicy
      * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Assignment $assignment)
+    public function update(User $user, Course $course, Assignment $assignment)
     {
-        return $use->is_admin
+        return (($user->courses()->where('course_id', $course->id)->exist())
+        &&($user->assignments()->where('assignment_id',$assigment->id)->exist()))
         ? Response::allow()
         : Response::deny();
     }
@@ -82,9 +74,10 @@ class AssignmentPolicy
      * @param  \App\Models\Assignment  $assignment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Assignment $assignment)
+    public function delete(User $user, Course $course, Assignment $assignment)
     {
-        return $use->is_admin
+        return (($user->courses()->where('course_id', $course->id)->exist())
+        &&($user->assignments()->where('assignment_id',$assigment->id)->exist()))
         ? Response::allow()
         : Response::deny();
     }

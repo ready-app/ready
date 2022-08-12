@@ -43,4 +43,13 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean'
     ];
+
+
+    public function courses(){
+        return $this->hasMany(Course::class);
+    }
+
+    public function assignments(){
+        return $this->hasMany(Assignment::class);
+    }
 }
