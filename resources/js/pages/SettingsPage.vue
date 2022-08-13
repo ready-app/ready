@@ -13,7 +13,7 @@
                     class="text-danger"
                     v-if="failedPasswordChange()"
                 >
-                    Error
+                    Invalid parameters!
                 </p>
                 <div class="mb-3 form-floating">
                     <input
@@ -35,35 +35,35 @@
                 <div class="mb-3 form-floating">
                     <input
                         type="password"
-                        id="password-field"
+                        id="NewPassword-field"
                         class="form-control"
-                        :class="{ 'is-invalid': Passform.errors.password }"
+                        :class="{ 'is-invalid': Passform.errors.NewPassword }"
                         v-model="Passform.NewPassword"
                         placeholder="password"
                     >
-                    <label for="password-field">New Password</label>
+                    <label for="NewPassword-field">New Password</label>
                     <div
-                        v-if="Passform.errors.password"
+                        v-if="Passform.errors.NewPassword"
                         class="invalid-feedback"
                     >
-                        {{ Passform.errors.password }}
+                        {{ Passform.errors.NewPassword }}
                     </div>
                 </div>
                 <div class="mb-3 form-floating">
                     <input
                         type="password"
-                        id="password-field"
+                        id="ConfirmPassword-field"
                         class="form-control"
-                        :class="{ 'is-invalid': Passform.errors.password }"
+                        :class="{ 'is-invalid': Passform.errors.ConfirmPassword }"
                         v-model="Passform.ConfirmPassword"
                         placeholder="password"
                     >
-                    <label for="password-field">Confirm Password</label>
+                    <label for="ConfirmPassword-field">Confirm Password</label>
                     <div
-                        v-if="Passform.errors.password"
+                        v-if="Passform.errors.ConfirmPassword"
                         class="invalid-feedback"
                     >
-                        {{ Passform.errors.password }}
+                        {{ Passform.errors.ConfirmPassword }}
                     </div>
                 </div>
             </form>
@@ -88,14 +88,14 @@
                 </p>
                 <div class="mb-3 form-floating">
                     <input
-                        type="password"
-                        id="password-field"
+                        type="text"
+                        id="name-field"
                         class="form-control"
                         :class="{ 'is-invalid': Nameform.errors.name}"
                         v-model="Nameform.name"
-                        placeholder="password"
+                        placeholder="name"
                     >
-                    <label for="password-field">New name</label>
+                    <label for="name-field">New name</label>
                     <div
                         v-if="Nameform.errors.name"
                         class="invalid-feedback"

@@ -27,7 +27,7 @@ class UserService {
     public function updatePassword(array $params) {
 
         $user = auth()->user();
-        $user->password = Hash::make($params['password']);
+        $user->password = Hash::make($params['new_password']);
         $user->save();
     }
 }

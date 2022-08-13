@@ -23,7 +23,7 @@ class SettingsController extends Controller {
     }
 
     public function updateName(NameChangeRequest $request) {
-        //dd($user); debug
+
         if ($this->userService->updateName($request->user(), $request->validated())) {
             return redirect()->route('settings.index')->with('success', 'Name updated');
         }
@@ -31,8 +31,8 @@ class SettingsController extends Controller {
     }
 
     public function updatePassword(PasswordChangeRequest $request) {
-
-
+        
+        
         if ($this->userService->updatePassword($request->user(),$request->validated())) {
             return redirect()->route('settings.index')->with('success', 'Password updated');
         }
