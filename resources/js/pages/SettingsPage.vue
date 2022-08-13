@@ -24,7 +24,7 @@
                         v-model="Passform.password"
                         placeholder="password"
                     >
-                    <label for="password-field">Orginal Password</label>
+                    <label for="password-field">Original Password</label>
                     <div
                         v-if="Passform.errors.password"
                         class="invalid-feedback"
@@ -124,35 +124,28 @@ const Nameform = useForm({
 });
 
 const Passsubmit = () => {
-    //Inertia.post("/login", form);
-    Passform.post("/settings");
+    Passform.post("/settings/changepassword");
 
 };
 
 const namesubmit = () => {
-    //Inertia.post("/login", form);
-    Nameform.post("/settings");
+    Nameform.post("/settings/changename");
 
 };
 
 
 const failedPasswordChange = () => {
     if(Passform.NewPassword != Passform.ConfirmPassword){
-        return false;
+        return true;
     }
-    if (!Passform.hasErrors) {
-        return false;
+    if(Passform.password == Passform.NewPassword && Passform.password != "" && Passform.NewPassword != "" && Passform.ConfirmPassword != ""){ 
+        return true;
     }
-    if (Passform.errors.password) {
-        return false;
-    }
-    return true;
+    return false;
 };
 
 const failedNameChange = () => {
-    if (!Nameform.hasErrors) {
-        return false;
-    }
+
     if(Nameform.name == ""){
         return true;
     }

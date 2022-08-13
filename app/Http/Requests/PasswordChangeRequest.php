@@ -14,7 +14,7 @@ class PasswordChangeRequest extends FormRequest {
         return [
             'password' => 'required|string|min:8',
             'new_password' => 'required|string|min:8',
-            'new_password_confirmation' => 'required|string|same:password',
+            'new_password_confirmation' => 'required|string|same:new_password',
         ];
     }
 }
