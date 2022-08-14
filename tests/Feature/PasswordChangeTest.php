@@ -28,7 +28,7 @@ class PasswordChangeTest extends TestCase {
 
         ]);
         $response->assertRedirect(route('settings.index'));
-        $response->assertSessionHas('success');        
+        $response->assertSessionHas('success');
 
 
         $this->assertDatabaseMissing('users', [
@@ -38,6 +38,5 @@ class PasswordChangeTest extends TestCase {
         $this->assertDatabaseHas('users', [
             'password' => Hash::make('projectready')
         ]);
-
     }
 }

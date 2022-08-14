@@ -2,7 +2,6 @@
 
 namespace Tests\Features;
 
-
 use Tests\TestCase;
 use App\Models\User;
 use App\Services\UserService;
@@ -10,7 +9,7 @@ use App\Http\Requests\NameChangeRequest;
 
 class NameChangeTest extends TestCase {
     /**
-     * Test if the name change is successful. 
+     * Test if the name change is successful.
      *
      * @return void
      */
@@ -33,7 +32,6 @@ class NameChangeTest extends TestCase {
 
         $this->assertDatabaseHas('users', [
             'name' => 'John'
-        ]); 
-
+        ]);
     }
 }
