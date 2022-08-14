@@ -23,6 +23,5 @@ class UpdateNameTest extends TestCase {
         $this->assertDatabaseHas('users', [
             'name' => 'Jane Doe'
         ]);
-        
     }
 }

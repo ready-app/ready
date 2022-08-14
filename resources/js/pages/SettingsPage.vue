@@ -3,10 +3,11 @@
         title="Change Password"
         button-text="Change Password"
         button-classes="btn btn-primary"
+        @modal-submit="Passsubmit"
     >
         <div class="align-items-left justify-content-left ">
             <form
-                @submit.prevent="Passsubmit"
+                @submit.prevent=""
                 class=" bg-pink "
             >
                 <p
@@ -138,7 +139,10 @@ const failedPasswordChange = () => {
     if(Passform.NewPassword != Passform.ConfirmPassword){
         return true;
     }
-    if(Passform.password == Passform.NewPassword && Passform.password != "" && Passform.NewPassword != "" && Passform.ConfirmPassword != ""){ 
+    if(Passform.password == Passform.NewPassword && Passform.password != "" ){ 
+        return true;
+    }
+    if(Passform.password == "" || Passform.NewPassword == "" || Passform.ConfirmPassword == ""){
         return true;
     }
     return false;

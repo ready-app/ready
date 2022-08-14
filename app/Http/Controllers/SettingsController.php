@@ -10,7 +10,6 @@ use App\Services\UserService;
 use App\Models\User;
 
 class SettingsController extends Controller {
-
     protected UserService $userService;
 
 
@@ -23,17 +22,13 @@ class SettingsController extends Controller {
     }
 
     public function updateName(NameChangeRequest $request) {
-
         if ($this->userService->updateName($request->user(), $request->validated())) {
             return redirect()->route('settings.index')->with('success', 'Name updated');
         }
-
     }
 
     public function updatePassword(PasswordChangeRequest $request) {
-        
-        
-        if ($this->userService->updatePassword($request->user(),$request->validated())) {
+        if ($this->userService->updatePassword($request->user(), $request->validated())) {
             return redirect()->route('settings.index')->with('success', 'Password updated');
         }
     }

@@ -19,15 +19,12 @@ class UserService {
     }
 
     public function updateName(User $user, array $params) {
-        // $user = auth()->user();
         $user->name = $params['name'];
         $user->save();
     }
 
-    public function updatePassword(array $params) {
-
-        $user = auth()->user();
-        $user->password = Hash::make($params['new_password']);
+    public function updatePassword(User $user, array $params) {
+        $user->password = Hash::make($params['NewPassword']);
         $user->save();
     }
 }
