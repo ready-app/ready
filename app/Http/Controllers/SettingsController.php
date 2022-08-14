@@ -25,11 +25,13 @@ class SettingsController extends Controller {
         if ($this->userService->updateName($request->user(), $request->validated())) {
             return redirect()->route('settings.index')->with('success', 'Name updated');
         }
+        return redirect()->route('settings.index')->with('error', 'Failed to update name');
     }
 
     public function updatePassword(PasswordChangeRequest $request) {
         if ($this->userService->updatePassword($request->user(), $request->validated())) {
             return redirect()->route('settings.index')->with('success', 'Password updated');
         }
+        return redirect()->route('settings.index')->with('error', 'Failed to update password');
     }
 }
