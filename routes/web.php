@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -30,6 +31,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+    Route::resource('/course',CourseController::class);
+    Route::resource('/assignment',AssignmentController::class);
+
 });
 
 Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
@@ -47,6 +51,5 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
-    Route::resource('/course',[CourseController::class,'index'])->name('course.index');
-    Route::resource('/assignment',[AssignmentController::class,'index'])->name('assignment.index');
+    
 });
