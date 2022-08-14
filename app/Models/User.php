@@ -50,6 +50,6 @@ class User extends Authenticatable {
     }
 
     public function assignments(){
-        return $this->hasMany(Assignment::class);
+        return $this->hasManyThrough(Course::class,Assignment::class);
     }
 }

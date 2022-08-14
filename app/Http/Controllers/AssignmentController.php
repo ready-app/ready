@@ -17,27 +17,11 @@ class AssignmentController extends Controller
     }
 
 
-    public function create(){
-        return Redirect::to('assignment.index');
-    }
-
-
-    public function findAssignmentByCourse($course_id)
-    {
-        $assignments_list = Assignment::where('course_id', $course_id)->get();
-        foreach ($assignment as $assignments_list) {
-            $assignment->name=$assignments_list->assignment->name;
+    public function create(Request $request){
+        if(Assignment::create($request->validated())){
+            return redirect()->route('assignment.index')->with('success', 'Assignment is successfully created');
         }
-        return response()->json(['data'=>$assignment]);
-    }
-
-    public function findAssignmentByUser($user_id)
-    {
-        $assignments_list = Assignment::where('uesr_id', $user_id)->get();
-        foreach ($assignment as $assignments_list) {
-            $assignment->name=$assignments_list->assignment->name;
-        }
-        return response()->json(['data'=>$assignment]);
+        return redirect()->route('assignment.index')->with('error', 'Failed to create assignment');
     }
 
 
@@ -45,24 +29,25 @@ class AssignmentController extends Controller
     {
         $assignment = Assignment::find($id);
 
-        //return View::make('')->with('assignment', $assignment);
+        return redirect()->route('assignment.index');
     }
 
 
 
-    public function update($id){
-        $assignment = Assignment::find($id);
-        $assignment->name = Input::get('name');
-        $assignment->due_at = Input::get('due_at');
+    public function update(Request $request,Assignment $assignment){
 
-        return Redirect::to('assignment.index');
+        if($assigment->update($request->validated())){
+            return redirect()->route('assignment.index')->with('success', 'Assignment is successfully updated');
+        }
+        return redirect()->route('assignment.index')->with('error', 'Failed to update assignment');
     }
+
 
   
     public function destroy($id){
         $assignment = Assignment::find($id);
         $assignment -> delete();
 
-        return Redirect::to('assignment.index');
+        return redirect()->route('assignment.index');
     }
 }
