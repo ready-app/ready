@@ -35,8 +35,6 @@ class PasswordChangeTest extends TestCase {
             'password' => $old_password
         ]);
 
-        $this->assertDatabaseHas('users', [
-            'password' => Hash::make('projectready')
-        ]);
+        $this->assertTrue(Hash::check('projectready', $user->password));
     }
 }
