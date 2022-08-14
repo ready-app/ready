@@ -18,13 +18,13 @@ class UserService {
         ]);
     }
 
-    public function updateName(User $user, array $params) {
+    public function updateName(User $user, array $params): bool {
         $user->name = $params['name'];
-        $user->save();
+        return $user->save();
     }
 
-    public function updatePassword(User $user, array $params) {
+    public function updatePassword(User $user, array $params): bool {
         $user->password = Hash::make($params['NewPassword']);
-        $user->save();
+        return $user->save();
     }
 }

@@ -10,13 +10,13 @@ use App\Http\Requests\NameChangeRequest;
 
 class NameChangeTest extends TestCase {
     /**
-     * A basic test example.
+     * Test if the name change is successful. 
      *
      * @return void
      */
     public function test_NameChange() {
         $user = User::factory()->create();
-
+        $old_name = $user->name;
         $this->assertDatabaseHas('users', [
             'name' => $user->name
         ]);
@@ -24,10 +24,16 @@ class NameChangeTest extends TestCase {
         $response = $this->actingAs($user)->post(route('settings.updateName'), [
             'name' => 'John'
         ]);
-        dd($response);
-       $response->assertRedirect(route('settings.index'));
+        $response->assertRedirect(route('settings.index'));
         $response->assertSessionHas('success');
 
+        $this->assertDatabaseMissing('users', [
+            'name' => $old_name
+        ]);
+
+        $this->assertDatabaseHas('users', [
+            'name' => 'John'
+        ]); 
 
     }
 }

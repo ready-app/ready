@@ -3,38 +3,41 @@
 namespace Tests\Features;
 
 use App\Models\User;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use App\Services\UserService;
 use App\Http\Requests\PasswordChangeRequest;
+use Hash;
 
 class PasswordChangeTest extends TestCase {
     /**
-     * A basic test example.
+     * Test if the password change is successful.
      *
      * @return void
      */
     public function test_PasswordChange() {
-         $user = User::factory()->create(
-            [
-                'email' => 'filler',
-                'name' => 'temporary',
-                'password' => 'password'
-            ]
-        );
-        
+        $user = User::factory()->create();
+        $old_password = $user->password;
         $this->assertDatabaseHas('users', [
-            'name' => $user->name
+            'password' => $old_password
         ]);
 
-        $request = new PasswordChangeRequest();
-        $request->merge([
-            'password' => 'password',
-            'NewPassword' => 'newpassword',
-            'ConfirmPassword' => 'newpassword'
-        ]);
+        $response = $this->actingAs($user)->post(route('settings.updatePassword'), [
+            'password' => $user->password,
+            'NewPassword' => 'projectready',
+            'ConfirmPassword' => 'projectready'
 
-        $response = $this->actingAs($user)->updatePassword($request);
+        ]);
         $response->assertRedirect(route('settings.index'));
-        $response->assertSessionHas('success');
+        $response->assertSessionHas('success');        
+
+
+        $this->assertDatabaseMissing('users', [
+            'password' => $old_password
+        ]);
+
+        $this->assertDatabaseHas('users', [
+            'password' => Hash::make('projectready')
+        ]);
+
     }
 }
