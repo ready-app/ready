@@ -136,21 +136,20 @@ const namesubmit = () => {
 
 
 const failedPasswordChange = () => {
-    if(Passform.NewPassword != Passform.ConfirmPassword){
+    if(Passform.errors.password || Passform.errors.NewPassword || Passform.errors.ConfirmPassword) {
         return true;
     }
     if(Passform.password == Passform.NewPassword && Passform.password != "" ){ 
         return true;
-    }
-    if(Passform.password == "" || Passform.NewPassword == "" || Passform.ConfirmPassword == ""){
+    }     
+    if(Passform.NewPassword != Passform.ConfirmPassword && Passform.NewPassword != "" && Passform.ConfirmPassword != ""){
         return true;
-    }
+    }    
     return false;
 };
 
 const failedNameChange = () => {
-
-    if(Nameform.name == ""){
+    if(Nameform.errors.name){
         return true;
     }
     return false;
