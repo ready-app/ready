@@ -25,10 +25,8 @@ class AssignmentController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Assignment $assignment)
     {
-        $assignment = Assignment::find($id);
-
         return redirect()->route('assignment.index');
     }
 
@@ -44,8 +42,7 @@ class AssignmentController extends Controller
 
 
   
-    public function destroy($id){
-        $assignment = Assignment::find($id);
+    public function destroy(Assignment $assignment){
         $assignment -> delete();
 
         return redirect()->route('assignment.index');

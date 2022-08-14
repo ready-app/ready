@@ -33,10 +33,8 @@ class CourseController extends Controller
     }
 
   
-    public function destroy($id){
-        $course = Course::find($id);
+    public function destroy(Course $course){
         $course -> delete();
-
         return redirect()->route('course.index');
     }
 }
