@@ -14,12 +14,13 @@
         "@inertiajs/progress": "0.2.7",
         "@popperjs/core": "2.11.5",
         "@types/bootstrap": "^5.1.12",
+        "@types/lodash": "^4.14.182",
         "@typescript-eslint/eslint-plugin": "^5.28.0",
         "@typescript-eslint/parser": "^5.28.0",
         "@vitejs/plugin-vue": "3.0.1",
         "@vue/compiler-sfc": "3.2.37",
         "axios": "0.27.2",
-        "bootstrap": "5.2.0-beta1",
+        "bootstrap": "5.2.0",
         "dotenv": "16.0.1",
         "eslint": "^8.17.0",
         "eslint-plugin-vue": "^9.1.1",
@@ -32,6 +33,7 @@
         "vite": "3.0.2",
         "vue": "3.2.37",
         "vue-loader": "17.0.0",
+        "vue-toastification": "2.0.0-rc.5",
         "vue-tsc": "0.38.1"
     }
 }

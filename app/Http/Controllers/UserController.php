@@ -4,10 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
 class UserController extends Controller {
+
+    /**
+     * Shows page with list of users
+     */
+    public function index(Request $request) {
+        $users = User::query()
+            ->when($request->input("query"), function ($q, $query) {
+                $q->where('name', 'ilike', "%{$query}%");
+            })
+            ->paginate(10);
+        return inertia('admin/UsersPage', [
+            'users' => $users
+        ]);
+    }
+
+    /**
+     * Shows page with specific user
+     *
+     * @param User $user
+     */
+    public function show(User $user) {
+        return inertia('admin/UserPage', [
+            'editingUser' => $user
+        ]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -18,9 +44,9 @@ class UserController extends Controller {
      */
     public function update(UserUpdateRequest $request, User $user): RedirectResponse {
         if ($user->update($request->validated())) {
-            return redirect()->route('admin.index')->with('success', 'User updated');
+            return redirect()->back()->with('success', 'User updated');
         }
-        return redirect()->route('admin.index')->with('error', 'Failed to update user');
+        return redirect()->back()->with('error', 'Failed to update user');
     }
 
     /**
@@ -31,8 +57,8 @@ class UserController extends Controller {
      */
     public function destroy(User $user): RedirectResponse {
         if ($user->delete()) {
-            return redirect()->route('admin.index')->with('success', 'User deleted');
+            return redirect()->route('users.index')->with('success', 'User deleted');
         }
-        return redirect()->route('admin.index')->with('error', 'Failed to delete user');
+        return redirect()->route('users.index')->with('error', 'Failed to delete user');
     }
 }

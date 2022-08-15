@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserLoginRequest extends FormRequest {
+class TermUpdateRequest extends FormRequest {
     /**
      * Get the validation rules that apply to the request.
      *
@@ -12,8 +12,10 @@ class UserLoginRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'email' => 'required|email|max:255',
-            'password' => 'required'
+            'name' => 'string',
+            'code' => 'string',
+            'start' => 'date',
+            'end' => 'date'
         ];
     }
 }
