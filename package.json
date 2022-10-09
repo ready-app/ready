@@ -12,6 +12,7 @@
         "@inertiajs/inertia": "0.11.0",
         "@inertiajs/inertia-react": "^0.8.1",
         "@inertiajs/progress": "0.2.7",
+        "@popperjs/core": "^2.11.6",
         "@rematch/core": "^2.2.0",
         "@rematch/immer": "^2.1.3",
         "@types/lodash": "^4.14.182",
@@ -24,15 +25,17 @@
         "bootstrap": "^5.2.2",
         "dotenv": "16.0.1",
         "eslint": "^8.17.0",
+        "immer": "^9.0.15",
         "laravel-vite-plugin": "0.5.2",
         "lodash": "4.17.21",
         "react": "^18.2.0",
         "react-bootstrap": "^2.5.0",
         "react-dom": "^18.2.0",
         "react-redux": "^8.0.4",
+        "redux": "^4.2.0",
         "resolve-url-loader": "5.0.0",
         "sass": "1.53.0",
-        "sass-loader": "13.0.0",
+        "typescript": "^4.8.4",
         "vite": "3.0.2"
     }
 }
