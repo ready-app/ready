@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
-import vue from "@vitejs/plugin-vue";
+import react from "@vitejs/plugin-react";
 import * as path from "path";
 import * as os from "os";
 import { config } from "dotenv";
@@ -25,8 +25,8 @@ if (localConfig.host !== "localhost" && process.env.VITE_APP_ENV === "dev") {
 export default defineConfig({
     server: localConfig,
     plugins: [
-        laravel(["resources/js/app.ts", "resources/sass/app.scss"]),
-        vue()
+        laravel(["resources/js/app.tsx", "resources/sass/app.scss"]),
+        react()
     ],
     resolve: {
         alias: {
