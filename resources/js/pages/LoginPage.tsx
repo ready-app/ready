@@ -8,6 +8,11 @@ export default function LoginPage() {
         password: ""
     });
 
+    const submit = (e: React.FormEvent) => {
+        e.preventDefault();
+        form.post("/login");
+    };
+
     return (
         <div className="d-flex align-items-center justify-content-center mt-5">
             <Form onSubmit={submit} className="p-4 bg-light border border-dark rounded">
