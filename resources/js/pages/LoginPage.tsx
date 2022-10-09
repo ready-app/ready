@@ -1,26 +1,12 @@
 import React from "react";
-import { InertiaLink, useForm, usePage } from "@inertiajs/inertia-react";
+import { InertiaLink, useForm } from "@inertiajs/inertia-react";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
-import { useAppDispatch } from "@/store";
-import { User } from "@/types";
 
 export default function LoginPage() {
     const form = useForm({
         email: "",
         password: ""
     });
-
-    const dispatch = useAppDispatch();
-
-    const submit = (e: React.FormEvent) => {
-        e.preventDefault();
-        form.post("/login", {
-            onSuccess: (e) => {
-                // const props: any = e.props;
-                // dispatch.users.setUser(props.user);
-            }
-        });
-    };
 
     return (
         <div className="d-flex align-items-center justify-content-center mt-5">

@@ -5,8 +5,8 @@
         "development": "VITE_APP_ENV=dev vite",
         "prod": "npm run production",
         "production": "tsc --noEmit && VITE_APP_ENV=prod vite build",
-        "eslint": "eslint resources/js --ext .ts,.vue",
-        "eslint-fix": "eslint resources/js --ext .ts,.vue --fix"
+        "eslint": "eslint resources/js --ext .ts,.tsx",
+        "eslint-fix": "eslint resources/js --ext .ts,.tsx --fix"
     },
     "devDependencies": {
         "@inertiajs/inertia": "0.11.0",
