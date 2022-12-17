@@ -1,9 +1,0 @@
-.footer {
-    margin-top: auto;
-}
-
-.page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}

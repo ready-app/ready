@@ -25,5 +25,3 @@ export type Paginate<T> = {
     links: Link[],
     data: T[]
 }
-
-//export declare function usePage<Props>(): Page
