@@ -67,6 +67,14 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <Link
+                                    href="/settings"
+                                    class="dropdown-item"
+                                >
+                                    Settings
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     href="/logout"
                                     class="dropdown-item"
                                 >
