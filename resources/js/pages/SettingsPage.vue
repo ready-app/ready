@@ -1,158 +1,162 @@
 <template>
-    <TheModal
-        title="Change Password"
-        button-text="Change Password"
-        button-classes="btn btn-primary"
-        @modal-submit="Passsubmit"
-    >
-        <div class="align-items-left justify-content-left ">
-            <form
-                @submit.prevent=""
-                class=" bg-pink "
-            >
-                <p
-                    class="text-danger"
-                    v-if="failedPasswordChange()"
+    <div>
+        <button
+            class="btn btn-secondary"
+            @click="passFormOpen = true"
+        >
+            Change Password
+        </button>
+        <TheModal
+            title="Change Password"
+            v-model="passFormOpen"
+            @modal-submit="passSubmit"
+        >
+            <div class="align-items-left justify-content-left">
+                <form
+                    class="bg-pink"
+                    @submit.prevent
                 >
-                    Invalid parameters!
-                </p>
-                <div class="mb-3 form-floating">
-                    <input
-                        type="password"
-                        id="password-field"
-                        class="form-control"
-                        :class="{ 'is-invalid': Passform.errors.password }"
-                        v-model="Passform.password"
-                        placeholder="password"
+                    <p
+                        class="text-danger"
+                        v-if="passForm.hasErrors"
                     >
-                    <label for="password-field">Original Password</label>
-                    <div
-                        v-if="Passform.errors.password"
-                        class="invalid-feedback"
-                    >
-                        {{ Passform.errors.password }}
+                        Invalid parameters!
+                    </p>
+                    <div class="mb-3 form-floating">
+                        <input
+                            type="password"
+                            id="password-field"
+                            class="form-control"
+                            :class="{ 'is-invalid': passForm.errors.password }"
+                            v-model="passForm.password"
+                            placeholder="password"
+                        >
+                        <label for="password-field">Original Password</label>
+                        <div
+                            v-if="passForm.errors.password"
+                            class="invalid-feedback"
+                        >
+                            {{ passForm.errors.password }}
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3 form-floating">
-                    <input
-                        type="password"
-                        id="NewPassword-field"
-                        class="form-control"
-                        :class="{ 'is-invalid': Passform.errors.NewPassword }"
-                        v-model="Passform.NewPassword"
-                        placeholder="password"
-                    >
-                    <label for="NewPassword-field">New Password</label>
-                    <div
-                        v-if="Passform.errors.NewPassword"
-                        class="invalid-feedback"
-                    >
-                        {{ Passform.errors.NewPassword }}
+                    <div class="mb-3 form-floating">
+                        <input
+                            type="password"
+                            id="NewPassword-field"
+                            class="form-control"
+                            :class="{ 'is-invalid': passForm.errors.new_password }"
+                            v-model="passForm.new_password"
+                            placeholder="password"
+                        >
+                        <label for="NewPassword-field">New Password</label>
+                        <div
+                            v-if="passForm.errors.new_password"
+                            class="invalid-feedback"
+                        >
+                            {{ passForm.errors.new_password }}
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3 form-floating">
-                    <input
-                        type="password"
-                        id="ConfirmPassword-field"
-                        class="form-control"
-                        :class="{ 'is-invalid': Passform.errors.ConfirmPassword }"
-                        v-model="Passform.ConfirmPassword"
-                        placeholder="password"
-                    >
-                    <label for="ConfirmPassword-field">Confirm Password</label>
-                    <div
-                        v-if="Passform.errors.ConfirmPassword"
-                        class="invalid-feedback"
-                    >
-                        {{ Passform.errors.ConfirmPassword }}
+                    <div class="mb-3 form-floating">
+                        <input
+                            type="password"
+                            id="ConfirmPassword-field"
+                            class="form-control"
+                            :class="{ 'is-invalid': passForm.errors.new_password_confirmation }"
+                            v-model="passForm.new_password_confirmation"
+                            placeholder="password"
+                        >
+                        <label for="ConfirmPassword-field">Confirm Password</label>
+                        <div
+                            v-if="passForm.errors.new_password_confirmation"
+                            class="invalid-feedback"
+                        >
+                            {{ passForm.errors.new_password_confirmation }}
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div> 
-    </TheModal>
-
-    <TheModal
-        title="Change Username"
-        button-text="Change Username"
-        button-classes="btn btn-primary"
-    >
-        <div class="align-items-left justify-content-left ">
-            <form
-                @submit.prevent="namesubmit"
-                class=" bg-pink "
-            >
-                <p
-                    class="text-danger"
-                    v-if="failedNameChange()"
+                </form>
+            </div>
+        </TheModal>
+        <br>
+        <button
+            class="btn btn-secondary"
+            @click="nameFormOpen = true"
+        >
+            Change Name
+        </button>
+        <TheModal
+            title="Change Name"
+            v-model="nameFormOpen"
+            @modal-submit="nameSubmit"
+        >
+            <div class="align-items-left justify-content-left">
+                <form
+                    class="bg-pink"
+                    @submit.prevent
                 >
-                    Invalid name
-                </p>
-                <div class="mb-3 form-floating">
-                    <input
-                        type="text"
-                        id="name-field"
-                        class="form-control"
-                        :class="{ 'is-invalid': Nameform.errors.name}"
-                        v-model="Nameform.name"
-                        placeholder="name"
+                    <p
+                        class="text-danger"
+                        v-if="nameForm.hasErrors"
                     >
-                    <label for="name-field">New name</label>
-                    <div
-                        v-if="Nameform.errors.name"
-                        class="invalid-feedback"
-                    >
-                        {{ Nameform.errors.name }}
+                        Invalid name
+                    </p>
+                    <div class="mb-3 form-floating">
+                        <input
+                            type="text"
+                            id="name-field"
+                            class="form-control"
+                            :class="{ 'is-invalid': nameForm.errors.name}"
+                            v-model="nameForm.name"
+                            placeholder="name"
+                        >
+                        <label for="name-field">New name</label>
+                        <div
+                            v-if="nameForm.errors.name"
+                            class="invalid-feedback"
+                        >
+                            {{ nameForm.errors.name }}
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div> 
-    </TheModal>
+                </form>
+            </div>
+        </TheModal>
+    </div>
 </template>
 
 <script setup lang="ts">
 
+import { ref } from "vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import TheModal from "@/components/TheModal.vue";
 
-const Passform = useForm({
+const passFormOpen = ref(false);
+const nameFormOpen = ref(false);
+
+const passForm = useForm({
     password: "",
-    NewPassword: "",
-    ConfirmPassword: "",
+    new_password: "",
+    new_password_confirmation: ""
 });
 
-const Nameform = useForm({
-    name: "",
+const nameForm = useForm({
+    name: ""
 });
 
-const Passsubmit = () => {
-    Passform.post("/settings/changepassword");
-
+const passSubmit = () => {
+    passForm.post("/settings/change_password", {
+        onSuccess: () => {
+            passFormOpen.value = false;
+            passForm.reset();
+        }
+    });
 };
 
-const namesubmit = () => {
-    Nameform.post("/settings/changename");
-
-};
-
-
-const failedPasswordChange = () => {
-    if(Passform.errors.password || Passform.errors.NewPassword || Passform.errors.ConfirmPassword) {
-        return true;
-    }
-    if(Passform.password == Passform.NewPassword && Passform.password != "" ){ 
-        return true;
-    }     
-    if(Passform.NewPassword != Passform.ConfirmPassword && Passform.NewPassword != "" && Passform.ConfirmPassword != ""){
-        return true;
-    }    
-    return false;
-};
-
-const failedNameChange = () => {
-    if(Nameform.errors.name){
-        return true;
-    }
-    return false;
+const nameSubmit = () => {
+    nameForm.post("/settings/change_name", {
+        onSuccess: () => {
+            nameFormOpen.value = false;
+            nameForm.reset();
+        }
+    });
 };
 
 </script>

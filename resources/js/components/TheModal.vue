@@ -1,11 +1,4 @@
 <template>
-    <button
-        :class="buttonClasses"
-        @click="openModal"
-    >
-        {{ buttonText }}
-    </button>
-
     <div
         class="modal fade"
         ref="modalRef"
@@ -40,16 +33,15 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, onMounted, ref } from "vue";
+import { defineProps, onMounted, ref, watch } from "vue";
 import { Modal } from "bootstrap";
 
-defineProps<{
+const props = defineProps<{
     title: string,
-    buttonText: string,
-    buttonClasses: string
+    modelValue: boolean
 }>();
 
-const emit = defineEmits(["modal-submit"]);
+const emit = defineEmits(["update:modelValue", "modal-submit"]);
 
 let modal: Modal;
 
@@ -57,6 +49,18 @@ let modalRef = ref();
 
 onMounted(() => {
     modal = new Modal(modalRef.value);
+    modalRef.value.addEventListener("hide.bs.modal", () => {
+        emit("update:modelValue", false);
+    });
+});
+
+watch(() => props.modelValue, (m) => {
+    if (m) {
+        openModal();
+    }
+    else {
+        closeModal();
+    }
 });
 
 const openModal = () => {
@@ -69,9 +73,7 @@ const closeModal = () => {
 
 const submitModal = () => {
     emit("modal-submit");
-    closeModal();
 };
-
 
 </script>
 

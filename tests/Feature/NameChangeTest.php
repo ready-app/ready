@@ -1,11 +1,9 @@
 <?php
 
-namespace Tests\Features;
+namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
-use App\Services\UserService;
-use App\Http\Requests\NameChangeRequest;
 
 class NameChangeTest extends TestCase {
     /**
@@ -13,7 +11,7 @@ class NameChangeTest extends TestCase {
      *
      * @return void
      */
-    public function test_NameChange() {
+    public function test_name_change() {
         $user = User::factory()->create();
         $old_name = $user->name;
         $this->assertDatabaseHas('users', [

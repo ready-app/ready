@@ -1,11 +1,9 @@
 <?php
 
-namespace Tests\Features;
+namespace Tests\Feature;
 
 use App\Models\User;
 use Tests\TestCase;
-use App\Services\UserService;
-use App\Http\Requests\PasswordChangeRequest;
 use Hash;
 
 class PasswordChangeTest extends TestCase {
@@ -14,7 +12,7 @@ class PasswordChangeTest extends TestCase {
      *
      * @return void
      */
-    public function test_PasswordChange() {
+    public function test_password_change() {
         $user = User::factory()->create();
         $old_password = $user->password;
         $this->assertDatabaseHas('users', [
@@ -22,19 +20,33 @@ class PasswordChangeTest extends TestCase {
         ]);
 
         $response = $this->actingAs($user)->post(route('settings.updatePassword'), [
-            'password' => $user->password,
-            'NewPassword' => 'projectready',
-            'ConfirmPassword' => 'projectready'
-
+            'password' => 'password',
+            'new_password' => 'projectready',
+            'new_password_confirmation' => 'projectready'
         ]);
         $response->assertRedirect(route('settings.index'));
         $response->assertSessionHas('success');
-
 
         $this->assertDatabaseMissing('users', [
             'password' => $old_password
         ]);
 
         $this->assertTrue(Hash::check('projectready', $user->password));
+    }
+
+    /**
+     * Test functionality with invalid password
+     *
+     * @return void
+     */
+    public function test_password_fail() {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->post(route('settings.updatePassword'), [
+            'password' => 'wrong',
+            'new_password' => 'newpassword',
+            'new_password_confirmation' => 'newpassword'
+        ]);
+        $response->assertSessionHasErrors('password');
     }
 }

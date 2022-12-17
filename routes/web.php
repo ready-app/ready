@@ -32,9 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/coursework', [CourseworkController::class, 'index'])->name('coursework.index');
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::post('/settings/changename', [SettingsController::class, 'updateName'])->name('settings.updateName');
-    Route::post('/settings/changepassword', [SettingsController::class, 'updatePassword'])->name('settings.updatePassword');
-    
+    Route::post('/settings/change_name', [SettingsController::class, 'updateName'])->name('settings.updateName');
+    Route::post('/settings/change_password', [SettingsController::class, 'updatePassword'])->name('settings.updatePassword');
+
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
