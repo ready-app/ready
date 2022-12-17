@@ -21,11 +21,11 @@ A web app to easily manage your coursework.
 2. Run `composer install`
 3. Copy .env.example to .env
 4. Configure .env file to local environment
-5. Run `npm install` to install npm packages
+5. Run `yarn install` to install front end packages
 6. Run `php artisan key:generate` to create application key
 7. Run `./vendor/bin/sail up -d` to start Docker containers
 8. Run `./vendor/bin/sail artisan migrate` to perform migrations
-9. Run `./vendor/bin/sail npm run dev` to generate the JS/CSS assets
+9. Run `./vendor/bin/sail yarn run dev` to generate the JS/CSS assets
 10. Go to [http://localhost](http://localhost) to see website
 
 This uses Laravel sail to manage Docker containers for you.
